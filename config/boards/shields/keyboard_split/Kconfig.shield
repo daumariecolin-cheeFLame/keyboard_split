@@ -1,2 +1,5 @@
-config SHIELD_KEYBOARD_SPLIT
-    def_bool $(shields_list_contains,keyboard_split)
+config SHIELD_KEYBOARD_SPLIT_LEFT
+    def_bool $(shields_list_contains,keyboard_split_left)
+
+config SHIELD_KEYBOARD_SPLIT_RIGHT
+    def_bool $(shields_list_contains,keyboard_split_right)
