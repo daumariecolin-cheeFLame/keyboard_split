@@ -1,1 +1,26 @@
+&adc0 {
+    status = "okay";
+};
 
+/ {
+    joystick_scroll_listener: joystick_scroll_listener {
+        compatible = "zmk,input-listener";
+        device = <&joystick_scroll>;
+    };
+
+    joystick_scroll: joystick_scroll {
+        compatible = "analog-axis";
+        poll-period-ms = <10>;
+        cursor-max-speed = <20>; // Vitesse beaucoup plus basse pour le scroll !
+
+        axis_x {
+            io-channels = <&adc0 PIN_SCROLL_H>; // Axe Horizontal (scroll latéral)
+            input-code = <INPUT_REL_HWHEEL>; 
+        };
+
+        axis_y {
+            io-channels = <&adc0 PIN_SCROLL_V>; // Axe Vertical (scroll haut/bas)
+            input-code = <INPUT_REL_WHEEL>;
+        };
+    };
+};
