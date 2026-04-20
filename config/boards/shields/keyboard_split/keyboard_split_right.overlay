@@ -17,12 +17,12 @@
         cursor-max-speed = <600>;   // Vitesse max du curseur
 
         axis_x {
-            io-channels = <&adc0 PIN_AXE_X>; // Remplacer PIN_AXE_X par le numéro plus tard
+            io-channels = <&adc0 0>; // Remplacer PIN_AXE_X par le numéro plus tard
             input-code = <INPUT_REL_X>;      // Action : Déplacement horizontal
         };
 
         axis_y {
-            io-channels = <&adc0 PIN_AXE_Y>; // Remplacer PIN_AXE_Y par le numéro plus tard
+            io-channels = <&adc0 1>; // Remplacer PIN_AXE_Y par le numéro plus tard
             input-code = <INPUT_REL_Y>;      // Action : Déplacement vertical
         };
     };
