@@ -1,1 +1,29 @@
+/* On active le convertisseur de signal analogique vers numérique */
+&adc0 {
+    status = "okay";
+};
 
+/ {
+    /* 1. Le "Listener" : Il écoute le joystick et dit à ZMK d'en faire quelque chose */
+    joystick_mouse_listener: joystick_mouse_listener {
+        compatible = "zmk,input-listener";
+        device = <&joystick_mouvement>;
+    };
+
+    /* 2. La définition des axes : On transforme la tension en pixels */
+    joystick_mouvement: joystick_mouvement {
+        compatible = "analog-axis";
+        poll-period-ms = <10>;      // Vérifie la position toutes les 10ms
+        cursor-max-speed = <600>;   // Vitesse max du curseur
+
+        axis_x {
+            io-channels = <&adc0 PIN_AXE_X>; // Remplacer PIN_AXE_X par le numéro plus tard
+            input-code = <INPUT_REL_X>;      // Action : Déplacement horizontal
+        };
+
+        axis_y {
+            io-channels = <&adc0 PIN_AXE_Y>; // Remplacer PIN_AXE_Y par le numéro plus tard
+            input-code = <INPUT_REL_Y>;      // Action : Déplacement vertical
+        };
+    };
+};
