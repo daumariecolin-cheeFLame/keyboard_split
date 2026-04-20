@@ -1,7 +1,25 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/mouse.h> // Indispensable pour la souris
+#include <dt-bindings/zmk/mouse.h>
+
+/* -------------------------------------------------------------------------
+   CONFIGURATIONS DE LA SOURIS (MMV = Mouvement, MSC = Scroll)
+   ------------------------------------------------------------------------- */
+
+&mmv {
+    acceleration-exponent = <1>;      // Mouvement linéaire (proportionnel)
+    time-to-max-speed-ms = <300>;     // Accélération fluide sur 0,3 seconde
+};
+
+&msc {
+    acceleration-exponent = <0>;      // Pas d'accélération pour le scroll
+    time-to-max-speed-ms = <0>;       // Réponse instantanée pour le scroll
+};
+
+/* -------------------------------------------------------------------------
+   DÉFINITION DU KEYMAP (Partie minimale pour compilation)
+   ------------------------------------------------------------------------- */
 
 / {
     keymap {
@@ -9,8 +27,10 @@
 
         default_layer {
             bindings = <
-                &kp A      &kp Z      &kp E      &kp R
-                &mkp LCLK  &mkp RCLK  &mo 1      &kp SPACE
+                // mettre les touches plus tard
+                // On met des &none pour l'instant pour remplir les cases
+                &none      &none      &none      &none
+                &mkp LCLK  &mkp RCLK  &none      &none
             >;
         };
     };
