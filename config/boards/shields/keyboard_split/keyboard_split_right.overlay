@@ -1,3 +1,5 @@
+#include <dt-bindings/zmk/input_dt_codes.h>
+
 /* On active le convertisseur de signal analogique vers numérique */
 &adc {
     status = "okay";
