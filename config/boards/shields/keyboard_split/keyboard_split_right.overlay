@@ -1,19 +1,24 @@
 #include <dt-bindings/zmk/pointing.h>
 
-
 /* On active le convertisseur de signal analogique vers numérique */
 &adc {
     status = "okay";
 };
 
 / {
+    /* AJOUT INDISPENSABLE : On dit à ZMK d'utiliser kscan0 pour le clavier */
+    chosen {
+        zmk,kscan = &kscan0;
+    };
+
     /* Matrice de touches factice pour permettre la compilation */
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         wakeup-source;
         diode-direction = "col2row";
-        row-gpios = <&pro_micro 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
-        col-gpios = <&pro_micro 1 GPIO_ACTIVE_HIGH>;
+        // Utilisation de pins GPIO standard pour éviter les erreurs nice_nano
+        row-gpios = <&gpio0 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; 
+        col-gpios = <&gpio0 8 GPIO_ACTIVE_HIGH>;
     };
 
     /* 1. Le "Listener" : Il écoute le joystick et dit à ZMK d'en faire quelque chose */
@@ -29,13 +34,13 @@
         cursor-max-speed = <600>;   // Vitesse max du curseur
 
         axis_x {
-            io-channels = <&adc 0>; // Remplacer PIN_AXE_X par le numéro plus tard
-            input-code = <0>;      // Action : Déplacement horizontal
+            io-channels = <&adc 0>; 
+            input-code = <0>;       // Action : Déplacement horizontal
         };
 
         axis_y {
-            io-channels = <&adc 1>; // Remplacer PIN_AXE_Y par le numéro plus tard
-            input-code = <1>;      // Action : Déplacement vertical
+            io-channels = <&adc 1>; 
+            input-code = <1>;       // Action : Déplacement vertical
         };
     };
 };
