@@ -1,4 +1,4 @@
-
+#include <dt-bindings/zmk/pointing.h>
 
 /* On active le convertisseur de signal analogique vers numérique */
 &adc {
@@ -20,12 +20,12 @@
 
         axis_x {
             io-channels = <&adc 0>; // Remplacer PIN_AXE_X par le numéro plus tard
-            input-code = <0x00>;      // Action : Déplacement horizontal
+            input-code = <INPUT_REL_X>;      // Action : Déplacement horizontal
         };
 
         axis_y {
             io-channels = <&adc 1>; // Remplacer PIN_AXE_Y par le numéro plus tard
-            input-code = <0x01>;      // Action : Déplacement vertical
+            input-code = <INPUT_REL_Y>;      // Action : Déplacement vertical
         };
     };
 };
