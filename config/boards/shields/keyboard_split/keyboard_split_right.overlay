@@ -21,12 +21,12 @@
 
         axis_x {
             io-channels = <&adc 0>; // Remplacer PIN_AXE_X par le numéro plus tard
-            input-code = <INPUT_REL_X>;      // Action : Déplacement horizontal
+            input-code = <0>;      // Action : Déplacement horizontal
         };
 
         axis_y {
             io-channels = <&adc 1>; // Remplacer PIN_AXE_Y par le numéro plus tard
-            input-code = <INPUT_REL_Y>;      // Action : Déplacement vertical
+            input-code = <1>;      // Action : Déplacement vertical
         };
     };
 };
