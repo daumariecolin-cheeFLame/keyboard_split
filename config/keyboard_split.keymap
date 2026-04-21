@@ -24,7 +24,11 @@
 /* -------------------------------------------------------------------------
    DÉFINITION DU KEYMAP (Partie minimale pour compilation)
    ------------------------------------------------------------------------- */
-
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+    };
+};
 / {
     keymap {
         compatible = "zmk,keymap";
