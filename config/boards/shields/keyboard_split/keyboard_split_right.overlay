@@ -7,6 +7,15 @@
 };
 
 / {
+    /* Matrice de touches factice pour permettre la compilation */
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        wakeup-source;
+        diode-direction = "col2row";
+        row-gpios = <&pro_micro 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+        col-gpios = <&pro_micro 1 GPIO_ACTIVE_HIGH>;
+    };
+
     /* 1. Le "Listener" : Il écoute le joystick et dit à ZMK d'en faire quelque chose */
     joystick_mouse_listener: joystick_mouse_listener {
         compatible = "zmk,input-listener";
