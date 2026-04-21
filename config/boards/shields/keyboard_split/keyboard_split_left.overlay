@@ -1,18 +1,22 @@
 #include <dt-bindings/zmk/pointing.h>
 
-
 &adc {
     status = "okay";
 };
 
 / {
-    /* Matrice de touches factice pour permettre la compilation */
+    /* Indispensable pour que ZMK sache où envoyer les données */
+    chosen {
+        zmk,kscan = &kscan0;
+    };
+
+    /* Matrice factice corrigée pour nice_nano_v2 */
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         wakeup-source;
         diode-direction = "col2row";
-        row-gpios = <&pro_micro 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
-        col-gpios = <&pro_micro 1 GPIO_ACTIVE_HIGH>;
+        row-gpios = <&gpio0 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; // Pin P0.06
+        col-gpios = <&gpio0 8 GPIO_ACTIVE_HIGH>;                   // Pin P0.08
     };
 
     joystick_scroll_listener: joystick_scroll_listener {
@@ -23,16 +27,16 @@
     joystick_scroll: joystick_scroll {
         compatible = "analog-axis";
         poll-period-ms = <10>;
-        cursor-max-speed = <20>; // Vitesse beaucoup plus basse pour le scroll !
+        cursor-max-speed = <20>;
 
         axis_x {
-            io-channels = <&adc 0>; // Axe Horizontal (scroll latéral)
-            input-code = <6>; 
+            io-channels = <&adc 0>; 
+            input-code = <6>;  // INPUT_REL_HWHEEL
         };
 
         axis_y {
-            io-channels = <&adc 1>; // Axe Vertical (scroll haut/bas)
-            input-code = <8>;
+            io-channels = <&adc 1>; 
+            input-code = <8>;  // INPUT_REL_WHEEL
         };
     };
 };
