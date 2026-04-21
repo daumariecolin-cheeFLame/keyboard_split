@@ -6,6 +6,15 @@
 };
 
 / {
+    /* Matrice de touches factice pour permettre la compilation */
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        wakeup-source;
+        diode-direction = "col2row";
+        row-gpios = <&pro_micro 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+        col-gpios = <&pro_micro 1 GPIO_ACTIVE_HIGH>;
+    };
+
     joystick_scroll_listener: joystick_scroll_listener {
         compatible = "zmk,input-listener";
         device = <&joystick_scroll>;
