@@ -1,4 +1,4 @@
-
+#include <dt-bindings/zmk/pointing.h>
 
 &adc {
     status = "okay";
@@ -17,12 +17,12 @@
 
         axis_x {
             io-channels = <&adc 0>; // Axe Horizontal (scroll latéral)
-            input-code = <0x06>; 
+            input-code = <INPUT_REL_HWHEEL>; 
         };
 
         axis_y {
             io-channels = <&adc 1>; // Axe Vertical (scroll haut/bas)
-            input-code = <0x08>;
+            input-code = <INPUT_REL_WHEEL>;
         };
     };
 };
