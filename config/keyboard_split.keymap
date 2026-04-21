@@ -17,26 +17,25 @@
 &msc {
     x-input-code = <INPUT_REL_HWHEEL>;
     y-input-code = <INPUT_REL_WHEEL>;
-    time-to-max-speed-ms = <0>; // On garde 0 pour le scroll instantané
+    time-to-max-speed-ms = <0>; 
     acceleration-exponent = <0>;
 };
 
 /* -------------------------------------------------------------------------
-   DÉFINITION DU KEYMAP (Partie minimale pour compilation)
+   DÉFINITION DU KEYMAP
    ------------------------------------------------------------------------- */
+
 / {
+    /* On regroupe le 'chosen' et le 'keymap' dans le même bloc racine / */
     chosen {
         zmk,kscan = &kscan0;
     };
-};
-/ {
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-                // mettre les touches plus tard
-                // On met des &none pour l'instant pour remplir les cases
                 &none      &none      &none      &none
                 &mkp LCLK  &mkp RCLK  &none      &none
             >;
