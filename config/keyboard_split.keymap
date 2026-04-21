@@ -8,13 +8,17 @@
    ------------------------------------------------------------------------- */
 
 &mmv {
-    acceleration-exponent = <1>;      // Mouvement linéaire (proportionnel)
-    time-to-max-speed-ms = <300>;     // Accélération fluide sur 0,3 seconde
+    x-input-code = <INPUT_REL_X>;
+    y-input-code = <INPUT_REL_Y>;
+    time-to-max-speed-ms = <300>;
+    acceleration-exponent = <1>;
 };
 
 &msc {
-    acceleration-exponent = <0>;      // Pas d'accélération pour le scroll
-    time-to-max-speed-ms = <0>;       // Réponse instantanée pour le scroll
+    x-input-code = <INPUT_REL_HWHEEL>;
+    y-input-code = <INPUT_REL_WHEEL>;
+    time-to-max-speed-ms = <0>; // On garde 0 pour le scroll instantané
+    acceleration-exponent = <0>;
 };
 
 /* -------------------------------------------------------------------------
