@@ -17,12 +17,12 @@
 
         axis_x {
             io-channels = <&adc 0>; // Axe Horizontal (scroll latéral)
-            input-code = <INPUT_REL_HWHEEL>; 
+            input-code = <0x06>; 
         };
 
         axis_y {
             io-channels = <&adc 1>; // Axe Vertical (scroll haut/bas)
-            input-code = <INPUT_REL_WHEEL>;
+            input-code = <0x08>;
         };
     };
 };
