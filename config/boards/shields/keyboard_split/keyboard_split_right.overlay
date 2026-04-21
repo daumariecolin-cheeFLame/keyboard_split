@@ -1,4 +1,4 @@
-#include <dt-bindings/zmk/mouse.h>
+
 
 /* On active le convertisseur de signal analogique vers numérique */
 &adc {
