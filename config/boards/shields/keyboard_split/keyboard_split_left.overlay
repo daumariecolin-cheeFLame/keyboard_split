@@ -5,38 +5,39 @@
 };
 
 / {
-    /* Indispensable pour que ZMK sache où envoyer les données */
     chosen {
-        zmk,kscan = &kscan0;
+        zmk,kscan = &kscan_left; // Nom unique
     };
 
-    /* Matrice factice corrigée pour nice_nano_v2 */
-    kscan0: kscan {
+    /* Nom de nœud unique : kscan_left */
+    kscan_left: kscan_left {
         compatible = "zmk,kscan-gpio-matrix";
         wakeup-source;
         diode-direction = "col2row";
-        row-gpios = <&gpio0 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; // Pin P0.06
-        col-gpios = <&gpio0 8 GPIO_ACTIVE_HIGH>;                   // Pin P0.08
+        row-gpios = <&gpio0 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; 
+        col-gpios = <&gpio0 8 GPIO_ACTIVE_HIGH>;
     };
 
-    joystick_scroll_listener: joystick_scroll_listener {
+    /* Listener avec ID unique */
+    left_input_listener: left_input_listener {
         compatible = "zmk,input-listener";
-        device = <&joystick_scroll>;
+        device = <&joy_left>; 
     };
 
-    joystick_scroll: joystick_scroll {
+    /* Joystick avec ID unique */
+    joy_left: joy_left {
         compatible = "analog-axis";
         poll-period-ms = <10>;
         cursor-max-speed = <20>;
 
         axis_x {
             io-channels = <&adc 0>; 
-            input-code = <6>;  // INPUT_REL_HWHEEL
+            input-code = <6>;  // HWHEEL
         };
 
         axis_y {
             io-channels = <&adc 1>; 
-            input-code = <8>;  // INPUT_REL_WHEEL
+            input-code = <8>;  // WHEEL
         };
     };
 };
