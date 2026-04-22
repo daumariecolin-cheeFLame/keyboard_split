@@ -6,11 +6,10 @@
 
 / {
     chosen {
-        zmk,kscan = &kscan_left; // Nom unique
+        zmk,kscan = &kscan1; // On change 0 en 1
     };
 
-    /* Nom de nœud unique : kscan_left */
-    kscan_left: kscan_left {
+    kscan1: kscan { // On change 0 en 1
         compatible = "zmk,kscan-gpio-matrix";
         wakeup-source;
         diode-direction = "col2row";
@@ -18,26 +17,22 @@
         col-gpios = <&gpio0 8 GPIO_ACTIVE_HIGH>;
     };
 
-    /* Listener avec ID unique */
-    left_input_listener: left_input_listener {
+    joystick_left_listener: joystick_left_listener { // Nom unique
         compatible = "zmk,input-listener";
-        device = <&joy_left>; 
+        device = <&joy_left>; // On pointe vers joy_left
     };
 
-    /* Joystick avec ID unique */
-    joy_left: joy_left {
+    joy_left: joy_left {    // On appelle ce bloc joy_left
         compatible = "analog-axis";
         poll-period-ms = <10>;
-        cursor-max-speed = <20>;
-
+        cursor-max-speed = <20>; // Vitesse lente pour le scroll
         axis_x {
-            io-channels = <&adc 0>; 
-            input-code = <6>;  // HWHEEL
+            io-channels = <&adc 0>;
+            input-code = <6>; // REL_HWHEEL
         };
-
         axis_y {
-            io-channels = <&adc 1>; 
-            input-code = <8>;  // WHEEL
+            io-channels = <&adc 1>;
+            input-code = <8>; // REL_WHEEL
         };
     };
 };
