@@ -4,7 +4,7 @@
 #include <dt-bindings/zmk/pointing.h>
 
 /* -------------------------------------------------------------------------
-   CONFIGURATIONS DE LA SOURIS (MMV = Mouvement, MSC = Scroll)
+   TES CONFIGURATIONS DE SENSIBILITÉ (MMV et MSC)
    ------------------------------------------------------------------------- */
 
 &mmv {
@@ -22,15 +22,10 @@
 };
 
 /* -------------------------------------------------------------------------
-   DÉFINITION DU KEYMAP
+   DÉFINITION DU KEYMAP (Logique des touches)
    ------------------------------------------------------------------------- */
 
 / {
-    /* On regroupe le 'chosen' et le 'keymap' dans le même bloc racine / */
-    chosen {
-        zmk,kscan = &kscan0;
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
