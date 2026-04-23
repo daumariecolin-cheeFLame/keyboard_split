@@ -23,7 +23,7 @@
     };
 
     mouse_joy: mouse_joy {
-        compatible = "analog-axis";
+        compatible = "zmk,mouse-ps2";
         poll-period-ms = <10>;
         cursor-max-speed = <600>;
         axis_x {
