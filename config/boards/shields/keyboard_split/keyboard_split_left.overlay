@@ -17,10 +17,12 @@
         col-gpios = <&gpio0 8 GPIO_ACTIVE_HIGH>;
     };
 
+/*
     left_input_listener: left_input_listener {
         compatible = "zmk,input-listener";
         device = <&scrl_joy>; 
     };
+*/
 
     scrl_joy: scrl_joy {
         compatible = "zmk,mouse-ps2";
