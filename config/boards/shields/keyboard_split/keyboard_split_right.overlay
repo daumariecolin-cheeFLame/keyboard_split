@@ -16,12 +16,12 @@
         row-gpios = <&gpio0 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; 
         col-gpios = <&gpio0 8 GPIO_ACTIVE_HIGH>;
     };
-
+/*
     right_input_listener: right_input_listener {
         compatible = "zmk,input-listener";
         device = <&mouse_joy>; 
     };
-
+*/
     mouse_joy: mouse_joy {
         compatible = "zmk,mouse-ps2";
         poll-period-ms = <10>;
