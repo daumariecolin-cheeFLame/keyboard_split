@@ -19,10 +19,10 @@
 
     right_input_listener: right_input_listener {
         compatible = "zmk,input-listener";
-        device = <&joy>; 
+        device = <&mouse_joy>; 
     };
 
-    joy: joy {
+    mouse_joy: mouse_joy {
         compatible = "zmk,mouse-ps2";
         poll-period-ms = <10>;
         cursor-max-speed = <600>;
